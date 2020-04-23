@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import SEO from "../components/SEO"
-import innertext from 'innertext'
+import innertext from "innertext"
 
 const BlogpostLayout = ({ data }) => {
   const post = data.wordpressPost
@@ -17,12 +17,14 @@ const BlogpostLayout = ({ data }) => {
         keywords={post.categories.map(res => res.name).join(", ")}
       />
       <Header />
-      <div className="container">
-        <div className="row justify-content-md-center">
-          <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <main>
+        <div className="container">
+          <div className="row justify-content-md-center">
+            <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   )
@@ -38,7 +40,7 @@ export const query = graphql`
       featured_media {
         source_url
       }
-      categories 
+      categories
       excerpt
     }
   }
